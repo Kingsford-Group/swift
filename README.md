@@ -10,7 +10,7 @@ Shiyi Du · Jiayuan Liu · Weihua Du · Yue Huang · Jiayi Li · Yingtao Luo · 
 
 Carnegie Mellon University · Foundations of Cooperative AI Lab (FOCAL) · University of Notre Dame
 
-[Overview](#overview) · [How it works](#how-it-works) · [Results](#results) · [Code release](#code-release) · [Citation](#citation)
+[Paper (arXiv)](https://arxiv.org/abs/2604.25012) · [Overview](#overview) · [How it works](#how-it-works) · [Results](#results) · [Code release](#code-release) · [Citation](#citation)
 
 **Reuse prior workflow search. Synthesize a workflow for a new task in one generation pass.**
 
@@ -123,12 +123,17 @@ The intended release will cover:
 
 ## Citation
 
-If you use SWIFT in your research, please cite the paper. The entry below uses the camera-ready title and author list; publication identifiers will be added when available.
+If you use SWIFT in your research, please cite the [arXiv paper](https://arxiv.org/abs/2604.25012). The arXiv version is titled *Why Search When You Can Transfer? Amortized Agentic Workflow Design from Structural Priors*.
 
 ```bibtex
 @misc{du2026swift,
-  title = {Can Workflow Search Be Amortized? Demonstration-Guided Synthesis of {LLM} Agent Workflows},
+  title = {Why Search When You Can Transfer? Amortized Agentic Workflow Design from Structural Priors},
   author = {Du, Shiyi and Liu, Jiayuan and Du, Weihua and Huang, Yue and Li, Jiayi and Luo, Yingtao and Zhang, Xiangliang and Conitzer, Vincent and Kingsford, Carl},
-  year = {2026}
+  year = {2026},
+  eprint = {2604.25012},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.LG},
+  doi = {10.48550/arXiv.2604.25012},
+  url = {https://arxiv.org/abs/2604.25012}
 }
 ```
