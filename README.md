@@ -213,7 +213,7 @@ We welcome feedback on the paper, documentation improvements, and suggestions fo
 - **Documentation fixes:** submit a focused pull request describing the change.
 - **Future code contributions:** task adapters, workflow demonstrations, model integrations, and reproducibility improvements are useful directions once the implementation is available.
 
-When reporting an issue with a paper result, include the relevant table or section and enough detail to understand the discrepancy. Development and testing instructions will be added with the code release.
+Development and testing instructions will be added with the code release.
 
 <a id="citation"></a>
 
