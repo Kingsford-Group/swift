@@ -1,7 +1,6 @@
 <div align="center">
 
-# SWIFT
-### Synthesizing Workflows via Few-shot Transfer
+# SWIFT: Synthesizing Workflows via Few-shot Transfer
 
 **Can Workflow Search Be Amortized?**<br>
 **Demonstration-Guided Synthesis of LLM Agent Workflows**
@@ -10,15 +9,50 @@ Shiyi Du · Jiayuan Liu · Weihua Du · Yue Huang · Jiayi Li · Yingtao Luo · 
 
 Carnegie Mellon University · Foundations of Cooperative AI Lab (FOCAL) · University of Notre Dame
 
-[Paper (arXiv)](https://arxiv.org/abs/2604.25012) · [Overview](#overview) · [How it works](#how-it-works) · [Results](#results) · [Code release](#code-release) · [Citation](#citation)
+[![arXiv](https://img.shields.io/badge/arXiv-2604.25012-b31b1b.svg)](https://arxiv.org/abs/2604.25012)
+[![Status](https://img.shields.io/badge/Code-release%20in%20preparation-blue.svg)](#getting-started)
+
+[📄 Paper](https://arxiv.org/abs/2604.25012) · [🔎 Overview](#overview) · [🏆 Results](#results) · [🚀 Getting Started](#getting-started) · [📌 Roadmap](#roadmap) · [📝 Citation](#citation)
 
 **Reuse prior workflow search. Synthesize a workflow for a new task in one generation pass.**
 
 </div>
 
-> **Project status:** This repository currently contains the paper overview. Implementation, reusable workflow assets, and runnable examples are not yet available here.
+<a id="news"></a>
 
-## Overview
+## 📰 Updates & News
+
+- **[2026-09-09]** Updated the repository overview with the camera-ready method figure, benchmark results, and release roadmap.
+- **[2026-04-27]** The [SWIFT preprint](https://arxiv.org/abs/2604.25012) is available on arXiv.
+
+<a id="tldr"></a>
+
+## ⚡ TL;DR
+
+- **The idea:** reuse workflow structures discovered on source tasks to synthesize a workflow for a new task in **one generation pass**.
+- **The ingredients:** executable workflow demonstrations, distilled design heuristics, and output-interface contracts.
+- **The result:** **85.34%** average accuracy on five main benchmarks with GPT-4o-mini, with substantially lower marginal optimization cost given an existing source bank.
+
+> 🚧 **Code release in preparation.** The paper overview and results are available now. Implementation, workflow assets, and runnable examples will follow.
+
+<details>
+<summary><b>📑 Table of Contents</b></summary>
+
+- [Overview](#overview)
+- [How It Works](#how-it-works)
+- [Getting Started](#getting-started)
+- [Benchmarks & Tasks](#benchmarks-and-tasks)
+- [Results](#results)
+- [Scope & Limitations](#scope-and-limitations)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [Citation](#citation)
+
+</details>
+
+<a id="overview"></a>
+
+## 🔎 Overview
 
 Designing an LLM agent workflow often means searching over many combinations of reasoning, verification, ensembling, and code execution for every new task. **SWIFT reuses what previous searches have already discovered.**
 
@@ -30,17 +64,11 @@ Given source-task search trajectories and workflow demonstrations, SWIFT distill
 
 *Method overview from Figure 2 of the camera-ready paper.*
 
-### Highlights
+**Workflow synthesis** produces the program; **workflow execution** runs that program and may use multiple operator and LLM calls. The reported cost advantage concerns optimization with an existing source bank.
 
-- **Single-pass workflow synthesis:** generate one candidate workflow without searching over and evaluating multiple candidates on the target task.
-- **Reusable structural knowledge:** transfer complete workflow demonstrations, compositional heuristics, and output contracts from source tasks.
-- **Strong benchmark results:** 85.34% average accuracy across five main benchmarks with GPT-4o-mini, compared with 82.25% for AFlow and 83.59% for MaAS.
-- **Low marginal optimization cost:** the MATH case study reports $0.004 for distillation over available source trajectories and target-workflow synthesis, compared with $22.50 for AFlow optimization.
-- **Transfer beyond the source pool:** improvements on four additional held-out benchmarks, plus execution-backbone evaluations with Grok, Qwen, and Gemma.
+<a id="how-it-works"></a>
 
-**One synthesis call is not one execution call.** The generated workflow can invoke multiple operators and LLM calls when solving an input. The optimization-cost comparison assumes an existing source bank; constructing that bank has a separate upstream cost.
-
-## How it works
+## 🧩 How It Works
 
 ### 1. Distill reusable priors offline
 
@@ -60,7 +88,36 @@ Run the generated program on task inputs using the execution model. Workflow syn
 
 **Evaluation protocol.** Source-pool tasks use task-level leave-one-out: the target task's examples, search trajectories, error logs, and optimized workflows are excluded from the synthesis inputs. Held-out benchmarks are absent from both trajectory distillation and demonstration construction.
 
-## Results
+<a id="getting-started"></a>
+
+## 🚀 Getting Started
+
+Start with the [paper](https://arxiv.org/abs/2604.25012) and [method overview](#how-it-works). This repository does not yet include an installable package or runnable implementation.
+
+| Resource | Availability |
+| :--- | :--- |
+| Paper | [Read on arXiv](https://arxiv.org/abs/2604.25012) |
+| Method overview & reported results | Available in this README |
+| Synthesis & execution implementation | Planned for the code release |
+| Demonstrations, heuristics & output contracts | Planned for the code release |
+| Installation & minimal example | Planned alongside the implementation |
+| Custom-task guide & reproduction configs | Planned after the end-to-end example |
+
+<a id="benchmarks-and-tasks"></a>
+
+## 🧪 Benchmarks & Tasks
+
+The camera-ready evaluation covers math reasoning, code generation, and question answering. Inclusion in this table describes the paper's experiments, not currently available dataset loaders.
+
+| Evaluation group | Benchmarks | Role |
+| :--- | :--- | :--- |
+| Source pool | GSM8K, MATH, HumanEval, MBPP | Task-level leave-one-out synthesis |
+| Held-out transfer | MultiArith, SVAMP, AIME 2024–2025, AQuA, BigCodeBench | Never included in the source demonstration pool |
+| Execution-backbone portability | GSM8K, MATH, HumanEval, MBPP, DROP, HotpotQA | Fixed workflows executed with Grok, Qwen, and Gemma |
+
+<a id="results"></a>
+
+## 🏆 Results
 
 Results below are reported in the camera-ready paper; they have not yet been reproduced from this repository.
 
@@ -77,7 +134,8 @@ Test accuracy (%) with GPT-4o-mini. Selected comparisons from **Table 1**; the p
 
 ¹ MultiArith is not part of the source demonstration pool. SWIFT improves over AFlow on all five main benchmarks and has the highest average accuracy among the methods compared in the paper.
 
-### Transfer to additional held-out benchmarks
+<details>
+<summary><b>🌍 Transfer to additional held-out benchmarks</b></summary>
 
 Accuracy (%) from **Table 2**. None of these benchmarks is included in the source demonstration pool.
 
@@ -88,7 +146,10 @@ Accuracy (%) from **Table 2**. None of these benchmarks is included in the sourc
 | AQuA | 52.9 | 79.9 | +27.0 |
 | BigCodeBench | 31.6 | 34.3 | +2.7 |
 
-### Optimization efficiency
+</details>
+
+<details>
+<summary><b>⏱️ Optimization efficiency and source-bank accounting</b></summary>
 
 MATH with GPT-4o-mini, from **Table 3**. These columns describe workflow optimization, excluding execution on the test set.
 
@@ -100,28 +161,51 @@ MATH with GPT-4o-mini, from **Table 3**. These columns describe workflow optimiz
 
 SWIFT's reported optimization cost includes contrastive distillation over available source trajectories and single-pass synthesis. It excludes the search needed to create those source trajectories. Under the paper's cold-start accounting, the upstream source bank costs approximately **$112.50**, with a break-even point of about **five downstream tasks** relative to per-task search (Section 4.2 and Appendix G). These are experimental measurements, not current API price estimates or guarantees for arbitrary tasks.
 
-### Execution-model portability
+</details>
+
+<details>
+<summary><b>🔄 Execution-model portability</b></summary>
 
 Holding the synthesized workflows and operator instructions fixed, the paper evaluates Grok-4.1-fast, Qwen3-8B, and Gemma-3-12B-IT across six benchmarks. SWIFT improves accuracy on **16 of 18** benchmark–model pairs (**Table 5**). Gains vary by model and task; for example, Gemma's MATH accuracy decreases, illustrating that transferred workflows depend on the executor's instruction-following ability.
 
-## Scope and limitations
+</details>
+
+<a id="scope-and-limitations"></a>
+
+## Scope & Limitations
 
 SWIFT is most relevant when source workflows or search traces already exist, or when their construction cost can be shared across multiple related tasks. The paper primarily evaluates static reasoning and code-generation benchmarks with automatic correctness signals.
 
 Transfer is sensitive to task-family alignment, output-interface compatibility, execution dependencies, and the capabilities of the execution model. The reported results do not establish effectiveness in general stochastic, interactive, or irreversible environments.
 
-## Code release
+<a id="roadmap"></a>
 
-The implementation is being prepared for this repository. Installation instructions and API examples will be added alongside verified, runnable code.
+## 📌 Roadmap
 
-The intended release will cover:
+- [x] Paper overview, method figure, and main results.
+- [x] arXiv citation and paper link.
+- [ ] Release workflow synthesis and execution code.
+- [ ] Release source demonstrations, distilled heuristics, and output contracts.
+- [ ] Add verified installation instructions and a minimal end-to-end example.
+- [ ] Document how to adapt SWIFT to a custom task.
+- [ ] Add evaluation configurations and reproduction instructions.
+- [ ] Establish automated checks and document tested model configurations.
 
-- Workflow synthesis and execution code.
-- Source workflow demonstrations, distilled heuristics, and output contracts.
-- A minimal end-to-end example and guidance for adapting a custom task.
-- Evaluation configurations and paper-reproduction instructions.
+<a id="contributing"></a>
 
-## Citation
+## 🤝 Contributing
+
+We welcome feedback on the paper, documentation improvements, and suggestions for tasks where workflow reuse would be useful.
+
+- **Questions or ideas:** [open an issue](https://github.com/Kingsford-Group/swift/issues).
+- **Documentation fixes:** submit a focused pull request describing the change.
+- **Future code contributions:** task adapters, workflow demonstrations, model integrations, and reproducibility improvements are useful directions once the implementation is available.
+
+When reporting an issue with a paper result, include the relevant table or section and enough detail to understand the discrepancy. Development and testing instructions will be added with the code release.
+
+<a id="citation"></a>
+
+## 📝 Citation
 
 If you use SWIFT in your research, please cite the [arXiv paper](https://arxiv.org/abs/2604.25012). The arXiv version is titled *Why Search When You Can Transfer? Amortized Agentic Workflow Design from Structural Priors*.
 
