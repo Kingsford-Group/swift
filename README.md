@@ -18,7 +18,7 @@
 
 ## 📰 Updates & News
 
-- **[2026-09-09]** Updated the repository overview with the camera-ready method figure, benchmark results, release roadmap, and curated research resources.
+- 🎉 **SWIFT has been accepted to the EMNLP 2026 Main Conference!**
 - **[2026-04-27]** The [SWIFT preprint](https://arxiv.org/abs/2604.25012) is available on arXiv.
 
 <a id="tldr"></a>
