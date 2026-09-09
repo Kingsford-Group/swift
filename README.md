@@ -5,10 +5,6 @@
 **Can Workflow Search Be Amortized?**<br>
 **Demonstration-Guided Synthesis of LLM Agent Workflows**
 
-Shiyi Du · Jiayuan Liu · Weihua Du · Yue Huang · Jiayi Li · Yingtao Luo · Xiangliang Zhang · Vincent Conitzer · Carl Kingsford
-
-Carnegie Mellon University · Foundations of Cooperative AI Lab (FOCAL) · University of Notre Dame
-
 [![arXiv](https://img.shields.io/badge/arXiv-2604.25012-b31b1b.svg)](https://arxiv.org/abs/2604.25012)
 [![Status](https://img.shields.io/badge/Code-release%20in%20preparation-blue.svg)](#getting-started)
 
