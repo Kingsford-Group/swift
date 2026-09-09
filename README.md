@@ -12,7 +12,7 @@ Carnegie Mellon University · Foundations of Cooperative AI Lab (FOCAL) · Unive
 [![arXiv](https://img.shields.io/badge/arXiv-2604.25012-b31b1b.svg)](https://arxiv.org/abs/2604.25012)
 [![Status](https://img.shields.io/badge/Code-release%20in%20preparation-blue.svg)](#getting-started)
 
-[📄 Paper](https://arxiv.org/abs/2604.25012) · [🔎 Overview](#overview) · [🏆 Results](#results) · [🚀 Getting Started](#getting-started) · [📌 Roadmap](#roadmap) · [📝 Citation](#citation)
+[📄 Paper](https://arxiv.org/abs/2604.25012) · [🔎 Overview](#overview) · [🏆 Results](#results) · [🚀 Getting Started](#getting-started) · [📚 Resources](#resources) · [📌 Roadmap](#roadmap) · [📝 Citation](#citation)
 
 **Reuse prior workflow search. Synthesize a workflow for a new task in one generation pass.**
 
@@ -22,7 +22,7 @@ Carnegie Mellon University · Foundations of Cooperative AI Lab (FOCAL) · Unive
 
 ## 📰 Updates & News
 
-- **[2026-09-09]** Updated the repository overview with the camera-ready method figure, benchmark results, and release roadmap.
+- **[2026-09-09]** Updated the repository overview with the camera-ready method figure, benchmark results, release roadmap, and curated research resources.
 - **[2026-04-27]** The [SWIFT preprint](https://arxiv.org/abs/2604.25012) is available on arXiv.
 
 <a id="tldr"></a>
@@ -44,6 +44,7 @@ Carnegie Mellon University · Foundations of Cooperative AI Lab (FOCAL) · Unive
 - [Benchmarks & Tasks](#benchmarks-and-tasks)
 - [Results](#results)
 - [Scope & Limitations](#scope-and-limitations)
+- [Research Resources](#resources)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
 - [Citation](#citation)
@@ -177,6 +178,21 @@ Holding the synthesized workflows and operator instructions fixed, the paper eva
 SWIFT is most relevant when source workflows or search traces already exist, or when their construction cost can be shared across multiple related tasks. The paper primarily evaluates static reasoning and code-generation benchmarks with automatic correctness signals.
 
 Transfer is sensitive to task-family alignment, output-interface compatibility, execution dependencies, and the capabilities of the execution model. The reported results do not establish effectiveness in general stochastic, interactive, or irreversible environments.
+
+<a id="resources"></a>
+
+## 📚 Research Resources
+
+Explore the **[research resource guide](docs/resources.md)** for an annotated reading path, official implementations, benchmark tools, and suggestions for designing informative comparisons.
+
+| Direction | Starting points |
+| :--- | :--- |
+| Workflow & architecture search | AFlow, ADAS, MaAS, AgentSquare |
+| Workflow & experience reuse | Agent Workflow Memory, SWIFT |
+| LM program optimization | DSPy, TextGrad |
+| Benchmarks & evaluation | GSM8K, MATH, EvalPlus, BigCodeBench, WebArena |
+
+Each entry explains its research relevance and links to primary sources. Contributions of relevant papers, tools, and corrected links are welcome.
 
 <a id="roadmap"></a>
 
