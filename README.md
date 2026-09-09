@@ -219,7 +219,7 @@ When reporting an issue with a paper result, include the relevant table or secti
 
 ## 📝 Citation
 
-If you use SWIFT in your research, please cite the [arXiv paper](https://arxiv.org/abs/2604.25012). The arXiv version is titled *Why Search When You Can Transfer? Amortized Agentic Workflow Design from Structural Priors*.
+If you find SWIFT helpful for your research, please consider citing our [paper](https://arxiv.org/abs/2604.25012):
 
 ```bibtex
 @misc{du2026swift,
